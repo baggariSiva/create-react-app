@@ -1,70 +1,123 @@
-# Getting Started with Create React App
+# ReactJs example demo CI/CD pipeline
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<a href="https://dash.elest.io/deploy?source=cicd&social=Github&url=https://github.com/elestio-examples/create-react-app"><img src="src\deploy-on-elestio.png" alt="Deploy on Elest.io" width="180px" /></a>
 
-## Available Scripts
+This is a very basic example of a simple ReactJs App.
 
-In the project directory, you can run:
+<img src="src\reactScreenshot.png" alt="screenshot of the ReactJs app" width="100%" />
 
-### `npm start`
+# Steps to clone this repository and run locally.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Step 1: Clone this repository.
 
-### `npm test`
+```
+git clone https://github.com/elestio-examples/create-react-app.git
+```
+### Step 2: Go to project folder.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```
+cd create-react-app
+```
 
-### `npm run build`
+### Step 3: Install dependencies.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```
+npm install
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Step 4: Run your app in dev mode.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```
+npm start
+```
 
-### `npm run eject`
+### Step 5: Make some changes and push.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## CI/CD on Elestio
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Showing here how to deploy to Elestio.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+# Steps to create CI/CD pipeline on elestio
 
-## Learn More
+### Step 1: Select CI/CD from left sidebar in app.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Click [here](https://dash.elest.io/deploy?source=cicd) to directly go to the CI/CD
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Step 2: Select Deployment method.
 
-### Code Splitting
+We have three different types of deployment method
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+- Github
+- Gitlab
+- Docker compose
 
-### Analyzing the Bundle Size
+But for this ReactJs Template, you can choose GitHub as your deployment method.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+### Step 3: Authentication
 
-### Making a Progressive Web App
+Select Clone in step at step Git Repository and select ReactJs template for creating a repository in your git account after that authenticate with Git by clicking on
+Continue with Github button and authorize elestio to access git then you can rename you repository name if you want.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+Else If you forked the repo then you can click on the Continue with GitHub button and authorize elestio to access the git repo then you can select the ReactJs repo otherwise you can directly insert a git repo URL to deploy the ReactJs application.
 
-### Advanced Configuration
+### Step 4: Configuration
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+After selecting a repo or inserting a URL it will auto-filled all the desired configurations using the elestio.yml/elestio.json file.
 
-### Deployment
+You can also manually customize the Configure your application. 
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+Select your runtime and its version, run & build commands.
 
-### `npm run build` fails to minify
+Reverse proxy configuration, Volume Configuration, Exposed Ports Configuration and Environment variables.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### Step 5: Choose Deployment Targets
+
+Elestio provides two different types of deployment targets.
+
+- New Infrastructure
+- Existing Infrastructures
+
+On elestio single CI/CD target you can deploy multiple CI/CD pipelines so, If you already have CI/CD target on elestio then you can deploy a new pipeline on the same existing CI/CD target by choosing **Existing Infrastructures** and then select the CI/CD target otherwise if you don't have anything or want to deploy on new target then you can choose **New Infrastructure**
+
+If you choose **New Infrastructure** then you have to select the deployment mode we have two different types of deployment modes.
+
+- Single-mode.
+- Cluster mode.
+
+  **NOTE:-** Steps 6,7,8 and 9 are only for New Infrastructure targets for Existing Infrastructures targets directly following the final step.
+
+### Step 6: Select Service Cloud Provider
+
+Elestio supports five different types of cloud service providers you can choose anyone to deploy your service.
+
+- Hetzner Cloud.
+- Digital Ocean.
+- Amazon Lightsail.
+- Linode.
+- Vultr.
+
+We also provide a BYOVM service option so if you already have your VM on any third-party provider (Azure, GCP, Alibaba, ...) then you can choose BYOVM to deploy CI/CD pipeline on your VM.
+
+Elestio provides one BYOVM service for free. To be eligible the VM you connect must have no more than 2 vCPU, max 4 GB of ram, and max 80 GB of storage
+
+### Step 7: Select Service Plan
+
+This step is only for other than BYOVM service providers.
+
+We're providing multiple different types of service plans as per proposing by your selected providers.
+
+### Step 8: Provide Service Name
+
+By default, we create a unique target name for you but you can customize it.
+
+### Step Final: Create Ci/CD pipeline
+
+Now after following all the above steps you can click on the button **Create Ci/CD pipeline**.
+
+It will take a few seconds to deploy your pipeline on elestio.
+
+For each pipeline deployed on elestio will create a cname for it. but if you want your custom domain then you can configure it inside the target details.
+
+After Pipeline is deployed you can able to view the app by visiting the pipeline domain.
